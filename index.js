@@ -1,6 +1,6 @@
-//const baseUrl = 'https://raw.githubusercontent.com/olawalejuwonm/Leader-Board/master/' //base Url Used in the Project
+const baseUrl = 'https://raw.githubusercontent.com/olawalejuwonm/Leader-Board/master/' //base Url Used in the Project
 
-const baseUrl = 'http://localhost:3000/' 
+//const baseUrl = 'http://localhost:3000/' 
 
 fetch(baseUrl + 'leaders.json') //fetches the  stringified json file
 .then((leaders) => {
