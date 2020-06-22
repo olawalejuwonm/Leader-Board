@@ -1,39 +1,42 @@
-const baseUrl = 'https://raw.githubusercontent.com/olawalejuwonm/Leader-Board/master/'
+//const baseUrl = 'https://raw.githubusercontent.com/olawalejuwonm/Leader-Board/master/' //base Url Used in the Project
 
-fetch(baseUrl + 'leaders.json')
+const baseUrl = 'http://localhost:3000/' 
+
+fetch(baseUrl + 'leaders.json') //fetches the  stringified json file
 .then((leaders) => {
-   return leaders.json()
+   return leaders.json()       //converts to json
 },(err) => console.log(err))
 .then((resp) => {
     let leaders = resp
     leaders.map((lead, index) => {
-        lead.id = index
+        lead.id = index         // assign id to the json document
     })
 
-    let points = [];
+    let points = [];     //initiate the points array
 
     leaders.map((lead) => {
-        points.push(Number(lead.Point))
+        points.push(Number(lead.Point)) //push all point in json to the points array
     })
 
     // console.log(points)
 
     
     
-    function myFunction() {
-        points.sort(function(a, b){return b-a});
+    function sortArrayDe() {
+        points.sort(function(a, b){return b-a});  //sort the array in descending other
         return points;
       }
 
-    let OrderedPoints = myFunction()
+    let OrderedPoints = sortArrayDe()      //store the sorted array
 
-    console.log(OrderedPoints)
+    // console.log(OrderedPoints)
     // console.log(leaders[1].name)
     leaders.map((lead) => {
 
 
-        // const attName = document.createAttribute("style");
-        // attName.value = "float: left;width: 10%;";
+        //Getting The Html Dom
+
+
         const NameId = document.getElementById("name");
         const userName = document.getElementById("username");
         const eMail = document.getElementById("email");
@@ -54,11 +57,15 @@ fetch(baseUrl + 'leaders.json')
         const top3N = document.getElementById("top1N");
         const top3U = document.getElementById("top1U");
         const top3E = document.getElementById("top1E");
-
-
+        //getting prefilled link
+        let tweetShare = 'https://twitter.com/intent/tweet?text=Am%glad%that%i%' +  '%ranked%' + (OrderedPoints.indexOf(Number(lead.Point)) + 1) + "%on%the%leaderboard%" + 'check%it%here' + "%https://olawalejuwonm.github.io/Leader-Board/"
+        let facebookShare = 'https://www.facebook.com/sharer.php?u=https://olawalejuwonm.github.io/Leader-Board/&title=The%20LeaderBoard'
+        //Making Top 3 On LeaderBoard Unique
 
         if (((OrderedPoints.indexOf(Number(lead.Point))) + 1) === 1) {
-            console.log((OrderedPoints.indexOf(Number(lead.Point))) + 1)
+            // console.log((OrderedPoints.indexOf(Number(lead.Point))) + 1)
+
+            //using Html Uniques
             top1N
             .appendChild(document.createElement('div'))
             .appendChild(document.createTextNode(lead.name))
@@ -77,7 +84,7 @@ fetch(baseUrl + 'leaders.json')
     
             share
             .appendChild(document.createElement('div'))
-            .innerHTML = '<a href="https://www.facebook.com"><img style="max-width: 15%;" src="facebook.jpg"></a><a href="https://www.twitter.com"><img style="max-width: 15%;" src="twitter.png"></a>'
+            .innerHTML = '<a href='+ facebookShare +'><img style="max-width: 15%;" src="facebook.jpg"></a><a href='+ tweetShare +'><img style="max-width: 15%;" src="twitter.png"></a>'
     
             rank
             .appendChild(document.createElement('div'))
@@ -103,7 +110,7 @@ fetch(baseUrl + 'leaders.json')
     
             share
             .appendChild(document.createElement('div'))
-            .innerHTML = '<a href="https://www.facebook.com"><img style="max-width: 15%;" src="facebook.jpg"></a><a href="https://www.twitter.com"><img style="max-width: 10%;" src="twitter.png"></a>'
+            .innerHTML = '<a href='+ facebookShare +'><img style="max-width: 15%;" src="facebook.jpg"></a><a href='+ tweetShare +'><img style="max-width: 10%;" src="twitter.png"></a>'
     
             rank
             .appendChild(document.createElement('div'))
@@ -131,7 +138,7 @@ fetch(baseUrl + 'leaders.json')
     
             share
             .appendChild(document.createElement('div'))
-            .innerHTML = '<a href="https://www.facebook.com"><img style="max-width: 15%;" src="facebook.jpg"></a><a href="https://www.twitter.com"><img style="max-width: 10%;" src="twitter.png"></a>'
+            .innerHTML = '<a href='+ facebookShare +'><img style="max-width: 15%;" src="facebook.jpg"></a><a href='+ tweetShare +'><img style="max-width: 10%;" src="twitter.png"></a>'
     
             rank
             .appendChild(document.createElement('div'))
@@ -139,6 +146,8 @@ fetch(baseUrl + 'leaders.json')
         }
         
         else if (((OrderedPoints.indexOf(Number(lead.Point))) + 1) > 3) {
+
+            //those not top 3
             NameId
             .appendChild(document.createElement('div'))
             .appendChild(document.createTextNode(lead.name))
@@ -157,7 +166,7 @@ fetch(baseUrl + 'leaders.json')
     
             share
             .appendChild(document.createElement('div'))
-            .innerHTML = '<a href="https://www.facebook.com"><img style="max-width: 15%;" src="facebook.jpg"></a><a href="https://www.twitter.com"><img style="max-width: 10%;" src="twitter.png"></a>'
+            .innerHTML = '<a href='+ facebookShare +'><img style="max-width: 15%;" src="facebook.jpg"></a><a href='+ tweetShare +'><img style="max-width: 10%;" src="twitter.png"></a>'
     
             rank
             .appendChild(document.createElement('div'))
