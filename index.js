@@ -1,4 +1,4 @@
-// const baseUrl = 'http://localhost:3000/'
+const baseUrl = 'https://raw.githubusercontent.com/olawalejuwonm/Leader-Board/master/'
 
 fetch(baseUrl + 'leaders.json')
 .then((leaders) => {
