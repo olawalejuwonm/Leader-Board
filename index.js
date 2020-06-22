@@ -57,7 +57,7 @@ fetch(baseUrl + 'leaders.json') //fetches the  stringified json file
         const top3N = document.getElementById("top1N");
         const top3U = document.getElementById("top1U");
         const top3E = document.getElementById("top1E");
-        //getting prefilled tweet
+        //getting prefilled link
         let tweetShare = 'https://twitter.com/intent/tweet?text=Am%glad%that%i%' +  '%ranked%' + (OrderedPoints.indexOf(Number(lead.Point)) + 1) + "%on%the%leaderboard%" + 'check%it%here' + "%https://olawalejuwonm.github.io/Leader-Board/"
         let facebookShare = 'https://www.facebook.com/sharer.php?u=https://olawalejuwonm.github.io/Leader-Board/&title=The%20LeaderBoard'
         //Making Top 3 On LeaderBoard Unique
